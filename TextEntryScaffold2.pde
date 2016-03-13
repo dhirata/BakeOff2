@@ -114,39 +114,43 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
 
 void mousePressed()
 {
-  if(didMouseClick(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-   currentTyped += 'q'; 
-  }
-  if(didMouseClick(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-   currentTyped += 'w'; 
-  }
-  if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 'e';
-  }
-  if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 'r'; 
-  }
-  if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 't'; 
-  }
-  if(didMouseClick(margin + sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 'a'; 
-  }
-  if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 's'; 
-  }
-  if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 'd'; 
-  }
-  if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
-    currentTyped += 'f'; 
-  }
+  if(leftSide) {
+    if(didMouseClick(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+     currentTyped += 'q'; 
+    }
+    if(didMouseClick(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+     currentTyped += 'w'; 
+    }
+    if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'e';
+    }
+    if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'r'; 
+    }
+    if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 't'; 
+    }
+    if(didMouseClick(margin + sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'a'; 
+    }
+    if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 's'; 
+    }
+    if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'd'; 
+    }
+    if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'f'; 
+    }
   
+  }
   //You are allowed to have a next button outside the 2" area
   if (didMouseClick(800, 00, 200, 200)) //check if click is in next button
   {
     nextTrial(); //if so, advance to next trial
   }
+  
+  
 }
 
 void changeSides() {
