@@ -115,6 +115,13 @@ void draw()
       rect(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+     
+      //middle right keys
+      rect(margin, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 2 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       
     }
     
@@ -187,6 +194,22 @@ void mousePressed()
     if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
       currentTyped += 'p'; 
     } 
+    
+    if(didMouseClick(margin, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'g'; 
+    }
+    if(didMouseClick(margin + sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'h'; 
+    }
+    if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'j'; 
+    }
+    if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'k'; 
+    }
+    if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'l'; 
+    }
   }
   //You are allowed to have a next button outside the 2" area
   if (didMouseClick(800, 00, 200, 200)) //check if click is in next button
