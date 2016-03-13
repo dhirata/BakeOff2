@@ -130,33 +130,19 @@ void mousePressed()
   if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
     currentTyped += 't'; 
   }
+  if(didMouseClick(margin + sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+    currentTyped += 'a'; 
+  }
+  if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+    currentTyped += 's'; 
+  }
+  if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+    currentTyped += 'd'; 
+  }
+  if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+    currentTyped += 'f'; 
+  }
   
-  
-  
-  //if (didMouseClick(200, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2)) //check if click in left button
-  //{
-  //  currentLetter --;
-  //  if (currentLetter<'_') //wrap around to z
-  //    currentLetter = 'z';
-  //}
-
-  //if (didMouseClick(200+sizeOfInputArea/2, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2)) //check if click in right button
-  //{
-  //  currentLetter ++;
-  //  if (currentLetter>'z') //wrap back to space (aka underscore)
-  //    currentLetter = '_';
-  //}
-
-  //if (didMouseClick(200, 200, sizeOfInputArea, sizeOfInputArea/2)) //check if click occured in letter area
-  //{
-  //  if (currentLetter=='_') //if underscore, consider that a space bar
-  //    currentTyped+=" ";
-  //  else if (currentLetter=='`' & currentTyped.length()>0) //if `, treat that as a delete command
-  //    currentTyped = currentTyped.substring(0, currentTyped.length()-1);
-  //  else if (currentLetter!='`') //if not any of the above cases, add the current letter to the typed string
-  //    currentTyped+=currentLetter;
-  //}
-
   //You are allowed to have a next button outside the 2" area
   if (didMouseClick(800, 00, 200, 200)) //check if click is in next button
   {
