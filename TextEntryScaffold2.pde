@@ -19,7 +19,7 @@ final float sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 //Variables for my silly implementation. You can delete this:
 char currentLetter = 'a';
 
-boolean leftSide = true;
+boolean leftSide = false;
 int margin = 200;
 
 //You can modify anything in here. This is just a basic implementation.
@@ -86,8 +86,8 @@ void draw()
     //fill(0, 255, 0);
     //rect(200+sizeOfInputArea/2, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw right green button
     
+    //Keys
     if(leftSide) {
-      //Hit boxes
       //top left keys
       rect(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
@@ -107,6 +107,15 @@ void draw()
       rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 3 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+    }
+    else {
+      //top right keys
+      rect(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      
     }
     
   }
@@ -161,6 +170,23 @@ void mousePressed()
        currentTyped += 'v'; 
     }
   
+  }
+  else {
+   if(didMouseClick(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+     currentTyped += 'y'; 
+    }
+    if(didMouseClick(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+     currentTyped += 'u'; 
+    }
+    if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'i';
+    }
+    if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'o'; 
+    }
+    if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'p'; 
+    } 
   }
   //You are allowed to have a next button outside the 2" area
   if (didMouseClick(800, 00, 200, 200)) //check if click is in next button
