@@ -112,7 +112,6 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
   return (mouseX > x && mouseX<x+w && mouseY>y && mouseY<y+h); //check to see if it is in button bounds
 }
 
-
 void mousePressed()
 {
   if(didMouseClick(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
@@ -150,6 +149,9 @@ void mousePressed()
   }
 }
 
+void changeSides() {
+   leftSide = !leftSide; 
+}
 
 void nextTrial()
 {
