@@ -101,6 +101,12 @@ void draw()
       rect(margin + 2 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      
+      //bottom left keys
+      rect(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 3 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
     }
     
   }
@@ -141,6 +147,18 @@ void mousePressed()
     }
     if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
       currentTyped += 'f'; 
+    }
+    if(didMouseClick(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'z'; 
+    }
+    if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'x'; 
+    }
+    if(didMouseClick(margin + 3 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+       currentTyped += 'c'; 
+    }
+    if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+       currentTyped += 'v'; 
     }
   
   }
