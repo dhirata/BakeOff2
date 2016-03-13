@@ -123,6 +123,10 @@ void draw()
       rect(margin + 3 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       
+      //bottom right keys
+      rect(margin, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
     }
     
   }
@@ -209,6 +213,15 @@ void mousePressed()
     }
     if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
       currentTyped += 'l'; 
+    }
+    if(didMouseClick(margin, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'b'; 
+    }
+    if(didMouseClick(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'n'; 
+    }
+    if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      currentTyped += 'm'; 
     }
   }
   //You are allowed to have a next button outside the 2" area
