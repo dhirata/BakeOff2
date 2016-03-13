@@ -19,6 +19,9 @@ final float sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 //Variables for my silly implementation. You can delete this:
 char currentLetter = 'a';
 
+boolean leftSide = true;
+int margin = 200;
+
 //You can modify anything in here. This is just a basic implementation.
 void setup()
 {
@@ -77,11 +80,20 @@ void draw()
 
     //my draw code
     textAlign(CENTER);
-    text("" + currentLetter, 200+sizeOfInputArea/2, 200+sizeOfInputArea/3); //draw current letter
-    fill(255, 0, 0);
-    rect(200, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw left red button
-    fill(0, 255, 0);
-    rect(200+sizeOfInputArea/2, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw right green button
+    //text("" + currentLetter, 200+sizeOfInputArea/2, 200+sizeOfInputArea/3); //draw current letter
+    //fill(255, 0, 0);
+    //rect(200, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw left red button
+    //fill(0, 255, 0);
+    //rect(200+sizeOfInputArea/2, 200+sizeOfInputArea/2, sizeOfInputArea/2, sizeOfInputArea/2); //draw right green button
+    
+    //top left keys
+    rect(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+    rect(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+    rect(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+    rect(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+    rect(margin + 4 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+
+    
   }
   
 }
