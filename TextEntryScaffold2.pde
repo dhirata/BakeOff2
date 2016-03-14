@@ -1,5 +1,7 @@
 import java.util.Arrays;
 import java.util.Collections;
+import android.view.MotionEvent;
+
 
 String[] phrases; //contains all of the phrases
 int totalTrialNum = 4; //the total number of phrases to be tested - set this low for testing. Might be ~10 for the real bakeoff!
@@ -12,15 +14,17 @@ float lettersExpectedTotal = 0; //a running total of the number of letters expec
 float errorsTotal = 0; //a running total of the number of errors (when hitting next)
 String currentPhrase = ""; //the current target phrase
 String currentTyped = ""; //what the user has typed so far
-final int DPIofYourDeviceScreen = 441; //you will need to look up the DPI or PPI of your device to make sure you get the right scale!!
+final int DPIofYourDeviceScreen = 256; //you will need to look up the DPI or PPI of your device to make sure you get the right scale!!
                                       //http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
 final float sizeOfInputArea = DPIofYourDeviceScreen*1; //aka, 1.0 inches square!
 
 //Variables for my silly implementation. You can delete this:
 char currentLetter = 'a';
 
-boolean leftSide = false;
+boolean leftSide = true;
 int margin = 200;
+Gestures g;      // create a gesture object
+color backgroundColor;   
 
 //You can modify anything in here. This is just a basic implementation.
 void setup()
@@ -29,9 +33,16 @@ void setup()
   Collections.shuffle(Arrays.asList(phrases)); //randomize the order of the phrases
     
   orientation(PORTRAIT); //can also be LANDSCAPE -- sets orientation on android device
-  size(1000, 1000); //Sets the size of the app. You may want to modify this to your device. Many phones today are 1080 wide by 1920 tall.
+  size(960, 540); //Sets the size of the app. You may want to modify this to your device. Many phones today are 1080 wide by 1920 tall.
   textFont(createFont("Arial", 24)); //set the font to arial 24
+  backgroundColor=color(0);
+  g=new Gestures(100,50,this);    // iniate the gesture object first value is minimum swipe length in pixel and second is the diagonal offset allowed
+  g.setSwipeUp("swipeUp");    // attach the function called swipeUp to the gesture of swiping upwards
+  g.setSwipeDown("swipeDown");    // attach the function called swipeDown to the gesture of swiping/ downwards
+  g.setSwipeLeft("swipeLeft");  // attach the function called swipeLeft to the gesture of swiping left
+  g.setSwipeRight("swipeRight");  // attach the function called swipeRight to the gesture of swiping right
   noStroke(); //my code doesn't use any strokes.
+  
 }
 
 //You can modify anything in here. This is just a basic implementation.
@@ -73,9 +84,9 @@ void draw()
     text("Target:   " + currentPhrase, 70, 100); //draw the target string
     text("Entered:  " + currentTyped, 70, 140); //draw what the user has entered thus far 
     fill(255, 0, 0);
-    rect(800, 00, 200, 200); //drag next button
+    rect(350, 00, 150, 60); //drag next button
     fill(255);
-    text("NEXT > ", 850, 100); //draw next label
+    text("NEXT > ", 375, 40); //draw next label
 
 
     //my draw code
@@ -90,6 +101,8 @@ void draw()
     if(leftSide) {
       //top left keys
       rect(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      text("z", margin + sizeOfInputArea/5/2, margin + 2* sizeOfInputArea/4);
+      
       rect(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 3 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
@@ -225,7 +238,7 @@ void mousePressed()
     }
   }
   //You are allowed to have a next button outside the 2" area
-  if (didMouseClick(800, 00, 200, 200)) //check if click is in next button
+  if (didMouseClick(350, 00, 150, 60)) //check if click is in next button
   {
     nextTrial(); //if so, advance to next trial
   }
@@ -290,7 +303,123 @@ void nextTrial()
   //currentPhrase = "abc"; // uncomment this to override the test phrase (useful for debugging)
 }
 
+//// android touch event. 
+public boolean surfaceTouchEvent(MotionEvent event) {
+// check what that was  triggered  
+ switch(event.getAction()) {
+ case MotionEvent.ACTION_DOWN:    // ACTION_DOWN means we put our finger down on the screen 
+   g.setStartPos(new PVector(event.getX(), event.getY()));    // set our start position
+   break;
+ case MotionEvent.ACTION_UP:    // ACTION_UP means we pulled our finger away from the screen  
+   g.setEndPos(new PVector(event.getX(), event.getY()));    // set our end position of the gesture and calculate if it was a valid one
+   break;
+ }
+ return super.surfaceTouchEvent(event);
+}
 
+// function that is called when we are swiping upwards
+void swipeUp() {
+ println("a swipe up");    
+ backgroundColor=color(100);
+}
+void swipeDown() {
+ println("a swipe down");
+ backgroundColor=color(150);
+}
+void swipeLeft() {
+ println("a swipe left");
+ backgroundColor=color(200);
+}
+void swipeRight() {
+ println("a swipe right");
+ backgroundColor=color(250);
+}
+
+
+import java.lang.reflect.Method;
+class Gestures {
+ int  maxOffset, minLength;
+ String functionName;
+ PVector startPos, endPos;
+ PApplet pApp;
+ Method[] m;
+ Gestures(int minimum,int offSet,PApplet theApplet) {
+   m=new Method[4];
+   pApp = theApplet;
+   maxOffset=offSet;    //number pixels you are allowed to travel off the axis and still being counted as a swipe
+   minLength=minimum;    // number of pixels you need to move your finger to count as a swipe
+ }
+ // where did our motion start
+ void setStartPos(PVector pos) {
+   startPos=pos;
+ }
+ // where did it end and also call to check if it was a valid swipe
+ void setEndPos(PVector pos) {
+   endPos=pos;
+   checkSwipe();
+   endPos=new PVector();
+   startPos=new PVector();
+ }
+ // check if it is a valid swipe that has been performed and if so perform the attached function
+ void checkSwipe() {
+   if (abs(startPos.x-endPos.x)>minLength&&abs(startPos.y-endPos.y)<maxOffset) {
+     if (startPos.x<endPos.x) {
+       performAction(2);    // a swipe right
+     }
+     else {
+       performAction(0);    // a swipe left
+     }
+   }
+   else {
+     if (abs(startPos.y-endPos.y)>minLength&&abs(startPos.x-endPos.x)<maxOffset) {
+       if (startPos.y<endPos.y) {
+         performAction(3);  // a swipe downwards
+       }
+       else {
+         performAction(1);  // a swipe upwards
+       }
+     }
+   }
+ }
+ // call the function that we have defined with setAction
+ void performAction(int direction) {
+   if (m[direction] == null)
+     return;
+   try {
+     m[direction].invoke(pApp);
+   } 
+   catch (Exception e) {
+     e.printStackTrace();
+   }
+ }
+ // define a function that should get called when the different swipes is done
+ void setAction(int direction, String method) {
+   if (method != null && !method.equals("")) {
+     try {
+       m[direction] = pApp.getClass().getMethod(method);
+     } 
+     catch (SecurityException e) {
+       e.printStackTrace();
+     } 
+     catch (NoSuchMethodException e) {
+       e.printStackTrace();
+     }
+   }
+ }
+ // attach a function to a left swipe
+ void setSwipeLeft(String _funcName) {
+   setAction(0, _funcName);
+ }
+ void setSwipeUp(String _funcName) {
+   setAction(1, _funcName);
+ }
+ void setSwipeRight(String _funcName) {
+   setAction(2, _funcName);
+ }
+ void setSwipeDown(String _funcName) {
+   setAction(3, _funcName);
+ }
+}
 
 
 //=========SHOULD NOT NEED TO TOUCH THIS METHOD AT ALL!==============
