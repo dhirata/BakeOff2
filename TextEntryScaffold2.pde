@@ -25,6 +25,7 @@ boolean leftSide = true;
 int margin = 200;
 Gestures g;      // create a gesture object
 color backgroundColor;   
+String displayString;
 
 //You can modify anything in here. This is just a basic implementation.
 void setup()
@@ -34,7 +35,9 @@ void setup()
     
   orientation(PORTRAIT); //can also be LANDSCAPE -- sets orientation on android device
   size(960, 540); //Sets the size of the app. You may want to modify this to your device. Many phones today are 1080 wide by 1920 tall.
-  textFont(createFont("Arial", 24)); //set the font to arial 24
+  String[] fontList = PFont.list();
+  printArray(fontList);
+  textFont(loadFont("Monospaced-48.vlw"), 24); //set the font to arial 24
   backgroundColor=color(0);
   g=new Gestures(100,50,this);    // iniate the gesture object first value is minimum swipe length in pixel and second is the diagonal offset allowed
   g.setSwipeUp("swipeUp");    // attach the function called swipeUp to the gesture of swiping upwards
@@ -81,14 +84,18 @@ void draw()
     fill(128);
     text("Phrase " + (currTrialNum+1) + " of " + totalTrialNum, 70, 50); //draw the trial count
     fill(255);
-    text("Target:   " + currentPhrase, 70, 100); //draw the target string
-    text("Entered:  " + currentTyped, 70, 140); //draw what the user has entered thus far 
+    text("Target:   " + currentPhrase.substring(0, 22), 70, 100); //draw the target string
+    text("          " + currentPhrase.substring(22), 70, 140);
+    //text("Entered:  " + currentTyped, 70, 140); //draw what the user has entered thus far 
     fill(255, 0, 0);
     rect(350, 00, 150, 60); //drag next button
     fill(255);
     text("NEXT > ", 375, 40); //draw next label
-
-
+    
+    int lowerbound = Math.max(0, currentTyped.length() - 16); //creates buffer
+    displayString = currentTyped.substring(lowerbound, currentTyped.length()) + "|"; //creates cursor 
+    text(displayString, margin + 5, margin + sizeOfInputArea/5 * 3/4);
+    
     //my draw code
     textAlign(CENTER);
     //text("" + currentLetter, 200+sizeOfInputArea/2, 200+sizeOfInputArea/3); //draw current letter
