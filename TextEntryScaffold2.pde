@@ -304,6 +304,15 @@ void nextTrial()
 }
 
 //// android touch event. 
+/*
+Swiping code
+made by
+david sjunnesson
+david@tellart.com
+Tellart.com
+2012
+Found at https://forum.processing.org/one/topic/gesture-example.html
+*/
 public boolean surfaceTouchEvent(MotionEvent event) {
 // check what that was  triggered  
  switch(event.getAction()) {
@@ -319,20 +328,22 @@ public boolean surfaceTouchEvent(MotionEvent event) {
 
 // function that is called when we are swiping upwards
 void swipeUp() {
- println("a swipe up");    
- backgroundColor=color(100);
+ //println("a swipe up");    
+ //backgroundColor=color(100);
 }
 void swipeDown() {
- println("a swipe down");
- backgroundColor=color(150);
+ //println("a swipe down");
+ //backgroundColor=color(150);
 }
 void swipeLeft() {
- println("a swipe left");
- backgroundColor=color(200);
+ if(leftSide) {
+    leftSide = !leftSide; 
+ }
 }
 void swipeRight() {
- println("a swipe right");
- backgroundColor=color(250);
+  if(!leftSide) {
+    leftSide = !leftSide; 
+ }
 }
 
 
