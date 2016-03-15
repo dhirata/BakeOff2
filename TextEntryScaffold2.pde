@@ -128,6 +128,10 @@ void draw()
       rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 3 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      
+      //Space key
+      rect(margin, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      
       //Overlay rectangles
       fill(255);
       
@@ -145,11 +149,14 @@ void draw()
       rect(margin + 4 * sizeOfInputArea/5+ 3, margin + 2 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       
       //bottom left keys
-      rect(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + sizeOfInputArea/5 + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       rect(margin + 2 * sizeOfInputArea/5+ 3, margin + 3 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       rect(margin + 3 * sizeOfInputArea/5+ 3, margin + 3 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       rect(margin + 4 * sizeOfInputArea/5+ 3, margin + 3 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       
+      //Space Key
+      rect(margin + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+
       //Letters 
       fill(64);
       text("q", margin + sizeOfInputArea/5/2, margin + sizeOfInputArea/4 + sizeOfInputArea * 7/48);
@@ -165,6 +172,7 @@ void draw()
       text("x", margin + 2 * sizeOfInputArea/5 + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
       text("c", margin + 3 * sizeOfInputArea/5 + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
       text("v", margin + 4 * sizeOfInputArea/5 + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
+      text("_", margin + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
     }
     else {
       //hitboxes
@@ -188,6 +196,9 @@ void draw()
       rect(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       
+      //Delete key
+      rect(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      
       //Overlay Rectangles
       fill(255);
       rect(margin + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
@@ -208,6 +219,9 @@ void draw()
       rect(margin + sizeOfInputArea/5 + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       rect(margin + 2 * sizeOfInputArea/5 + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
       
+      //delete key 
+      rect(margin + 4 * sizeOfInputArea/5 + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      
       //letters
       fill(64);
       text("y", margin + sizeOfInputArea/5/2, margin + sizeOfInputArea/4 + sizeOfInputArea * 7/48);
@@ -223,6 +237,7 @@ void draw()
       text("b", margin + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
       text("n", margin + sizeOfInputArea/5 + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
       text("m", margin + 2 * sizeOfInputArea/5 + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
+      text("<", margin + 4 * sizeOfInputArea/5 + sizeOfInputArea/5/2, margin + 3 * sizeOfInputArea/4 + sizeOfInputArea * 7/48);
     }
     
   }
@@ -277,6 +292,9 @@ void mousePressed()
     if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
        currentTyped += 'v'; 
     }
+    if(didMouseClick(margin, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+       currentTyped += ' '; 
+    }
   
   }
   else {
@@ -319,6 +337,11 @@ void mousePressed()
     }
     if(didMouseClick(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
       currentTyped += 'm'; 
+    }
+    if(didMouseClick(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
+      if(currentTyped.length() > 0) {
+        currentTyped = currentTyped.substring(0, currentTyped.length() - 1); 
+      }
     }
   }
   //You are allowed to have a next button outside the 2" area
