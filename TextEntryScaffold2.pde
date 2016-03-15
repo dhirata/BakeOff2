@@ -107,9 +107,11 @@ void draw()
     
     //Keys
     if(leftSide) {
+      //hitboxes
+      fill(128);
       //top left keys
       rect(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
-      text("z", margin + sizeOfInputArea/5/2, margin + 2* sizeOfInputArea/4);
+//      text("z", margin + sizeOfInputArea/5/2, margin + 2* sizeOfInputArea/4);
       
       rect(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
@@ -128,9 +130,34 @@ void draw()
       rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 3 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 4 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      //Overlay rectangles
+      fill(255);
+      
+      rect(margin + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+//      text("z", margin + sizeOfInputArea/5/2, margin + 2* sizeOfInputArea/4);
+      
+      rect(margin + sizeOfInputArea/5+ 3, margin + sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 2 * sizeOfInputArea/5+ 3, margin + sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 3 * sizeOfInputArea/5+ 3, margin + sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 4 * sizeOfInputArea/5+ 3, margin + sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      
+      //middle left keys
+      //rect(margin, margin + 2 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      rect(margin + sizeOfInputArea/5+ 3, margin + 2 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 2 * sizeOfInputArea/5+ 3, margin + 2 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 3 * sizeOfInputArea/5+ 3, margin + 2 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 4 * sizeOfInputArea/5+ 3, margin + 2 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      
+      //bottom left keys
+      rect(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 2 * sizeOfInputArea/5+ 3, margin + 3 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 3 * sizeOfInputArea/5+ 3, margin + 3 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 4 * sizeOfInputArea/5+ 3, margin + 3 * sizeOfInputArea/4+ 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
     }
     else {
+      //hitboxes
       //top right keys
+      fill(128);
       rect(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 2 * sizeOfInputArea/5, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
@@ -148,6 +175,26 @@ void draw()
       rect(margin, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
       rect(margin + 2 * sizeOfInputArea/5, margin + 3 * sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4);
+      
+      //Overlay Rectangles
+      fill(255);
+      rect(margin + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + sizeOfInputArea/5 + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 2 * sizeOfInputArea/5 + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 3 * sizeOfInputArea/5 + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 4 * sizeOfInputArea/5 + 3, margin + sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+     
+      //middle right keys
+      rect(margin + 3, margin + 2 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + sizeOfInputArea/5 + 3, margin + 2 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 2 * sizeOfInputArea/5 + 3, margin + 2 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 3 * sizeOfInputArea/5 + 3, margin + 2 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 4 * sizeOfInputArea/5 + 3, margin + 2 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      
+      //bottom right keys
+      rect(margin + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + sizeOfInputArea/5 + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
+      rect(margin + 2 * sizeOfInputArea/5 + 3, margin + 3 * sizeOfInputArea/4 + 3, sizeOfInputArea/5 - 6, sizeOfInputArea/4 - 6, 7);
     }
     
   }
