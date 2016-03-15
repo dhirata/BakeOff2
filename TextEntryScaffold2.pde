@@ -37,8 +37,8 @@ void setup()
     
   orientation(PORTRAIT); //can also be LANDSCAPE -- sets orientation on android device
   size(960, 540); //Sets the size of the app. You may want to modify this to your device. Many phones today are 1080 wide by 1920 tall.
-  String[] fontList = PFont.list();
-  printArray(fontList);
+  //String[] fontList = PFont.list();
+  //printArray(fontList);
   textFont(loadFont("Monospaced-48.vlw"), 24); //set the font to arial 24
   backgroundColor=color(0);
   g=new Gestures(100,50,this);    // iniate the gesture object first value is minimum swipe length in pixel and second is the diagonal offset allowed
@@ -358,7 +358,6 @@ void swipeRight() {
    nSize = currentTyped.length();
    if(oSize != nSize)  {
     currentTyped = currentTyped.substring(0, currentTyped.length() - 1);
-    System.out.println("=======");
    }
 }
 
