@@ -26,6 +26,8 @@ int margin = 200;
 Gestures g;      // create a gesture object
 color backgroundColor;   
 String displayString;
+int oSize;
+int nSize;
 
 //You can modify anything in here. This is just a basic implementation.
 void setup()
@@ -85,7 +87,7 @@ void draw()
     text("Phrase " + (currTrialNum+1) + " of " + totalTrialNum, 70, 50); //draw the trial count
     fill(255);
     text("Target:   " + currentPhrase.substring(0, 22), 70, 100); //draw the target string
-    text("          " + currentPhrase.substring(22), 70, 140);
+    text("          " + currentPhrase.substring(22), 70, 140); //overflow I hope it doesnt go over 44
     //text("Entered:  " + currentTyped, 70, 140); //draw what the user has entered thus far 
     fill(255, 0, 0);
     rect(350, 00, 150, 60); //drag next button
@@ -95,7 +97,6 @@ void draw()
     int lowerbound = Math.max(0, currentTyped.length() - 16); //creates buffer
     displayString = currentTyped.substring(lowerbound, currentTyped.length()) + "|"; //creates cursor 
     text(displayString, margin + 5, margin + sizeOfInputArea/5 * 3/4);
-    
     //my draw code
     textAlign(CENTER);
     //text("" + currentLetter, 200+sizeOfInputArea/2, 200+sizeOfInputArea/3); //draw current letter
@@ -160,6 +161,7 @@ boolean didMouseClick(float x, float y, float w, float h) //simple function to d
 
 void mousePressed()
 {
+  oSize = currentTyped.length();
   if(leftSide) {
     if(didMouseClick(margin, margin + sizeOfInputArea/4, sizeOfInputArea/5, sizeOfInputArea/4)) {
      currentTyped += 'q'; 
@@ -248,9 +250,7 @@ void mousePressed()
   if (didMouseClick(350, 00, 150, 60)) //check if click is in next button
   {
     nextTrial(); //if so, advance to next trial
-  }
-  
-  
+  }  
 }
 
 void changeSides() {
@@ -344,13 +344,22 @@ void swipeDown() {
 }
 void swipeLeft() {
  if(leftSide) {
-    leftSide = !leftSide; 
+     changeSides();
  }
+  nSize = currentTyped.length();
+  if(oSize != nSize)  {
+    currentTyped = currentTyped.substring(0, currentTyped.length() - 1); 
+  }
 }
 void swipeRight() {
   if(!leftSide) {
-    leftSide = !leftSide; 
- }
+      changeSides();
+  }
+   nSize = currentTyped.length();
+   if(oSize != nSize)  {
+    currentTyped = currentTyped.substring(0, currentTyped.length() - 1);
+    System.out.println("=======");
+   }
 }
 
 
